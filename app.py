@@ -1,5 +1,6 @@
 from flask import Flask, request
 from markupsafe import escape
+import jsonify
 
 app = Flask(__name__)
 
@@ -24,6 +25,11 @@ def index():
             <input type="submit" value="Submit">
         </form>
     '''
+
+@app.route("/hello", methods=["GET"])
+def hello_world():
+    """Return a JSON hello-world greeting."""
+    return jsonify({"message": "hello world"})
 
 if __name__ == "__main__":
     import os
